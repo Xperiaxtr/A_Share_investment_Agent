@@ -250,3 +250,7 @@
 2025-02-16 13:20:41,274 - api_calls - INFO - API logging system started
 2025-02-16 13:20:41,276 - api_calls - INFO - ✓ 已加载环境变量: D:\MON_REPO\A_Share_investment_Agent\.env
 2025-02-16 13:20:41,276 - api_calls - INFO - ✓ Gemini 客户端初始化成功
+2025-02-16 22:57:08,138 - api_calls - DEBUG - Logger initialization completed
+2025-02-16 22:57:08,138 - api_calls - INFO - API logging system started
+2025-02-16 22:57:08,139 - api_calls - INFO - ✓ 已加载环境变量: D:\MON_REPO\A_Share_investment_Agent\.env
+2025-02-16 22:57:08,141 - api_calls - INFO - ✓ Gemini 客户端初始化成功
