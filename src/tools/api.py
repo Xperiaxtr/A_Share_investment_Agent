@@ -533,6 +533,8 @@ def get_price_history(symbol: str, start_date: str = None, end_date: str = None,
 
     except Exception as e:
         print(f"获取历史行情数据时出错：{e}")
+        import traceback
+        traceback.print_exc()
         return pd.DataFrame()
 
 
