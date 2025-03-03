@@ -900,3 +900,109 @@
 2025-02-24 20:26:19,172 - api_calls - ERROR - 错误详情: Error code: 402 - {'error': {'message': 'Insufficient Balance', 'type': 'unknown_error', 'param': None, 'code': 'invalid_request_error'}}
 2025-02-24 20:26:19,172 - api_calls - ERROR - ✗ 尝试 3/3 失败: Error code: 402 - {'error': {'message': 'Insufficient Balance', 'type': 'unknown_error', 'param': None, 'code': 'invalid_request_error'}}
 2025-02-24 20:26:19,172 - api_calls - ERROR - ✗ 最终错误: Error code: 402 - {'error': {'message': 'Insufficient Balance', 'type': 'unknown_error', 'param': None, 'code': 'invalid_request_error'}}
+2025-02-24 21:44:24,252 - api_calls - DEBUG - Logger initialization completed
+2025-02-24 21:44:24,252 - api_calls - INFO - API logging system started
+2025-02-24 21:44:24,253 - api_calls - INFO - ✓ 已加载环境变量: D:\MON_REPO\A_Share_investment_Agent\.env
+2025-02-24 21:44:24,273 - api_calls - INFO - ✓ DEEPSEEK 客户端初始化成功
+2025-02-24 21:45:08,332 - api_calls - DEBUG - Logger initialization completed
+2025-02-24 21:45:08,332 - api_calls - INFO - API logging system started
+2025-02-24 21:45:08,333 - api_calls - INFO - ✓ 已加载环境变量: D:\MON_REPO\A_Share_investment_Agent\.env
+2025-02-24 21:45:08,334 - api_calls - INFO - ✓ Gemini 客户端初始化成功
+2025-02-24 21:45:18,872 - api_calls - INFO - ⟳ 使用模型: gemini-1.5-flash
+2025-02-24 21:45:18,873 - api_calls - DEBUG - 消息内容: [{'role': 'system', 'content': '你是一个专业的A股市场分析师，擅长解读新闻对股票走势的影响。你需要分析一组新闻的情感倾向，并给出一个介于-1到1之间的分数：\n        - 1表示极其积极（例如：重大利好消息、超预期业绩、行业政策支持）\n        - 0.5到0.9表示积极（例如：业绩增长、新项目落地、获得订单）\n        - 0.1到0.4表示轻微积极（例如：小额合同签订、日常经营正常）\n        - 0表示中性（例如：日常公告、人事变动、无重大影响的新闻）\n        - -0.1到-0.4表示轻微消极（例如：小额诉讼、非核心业务亏损）\n        - -0.5到-0.9表示消极（例如：业绩下滑、重要客户流失、行业政策收紧）\n        - -1表示极其消极（例如：重大违规、核心业务严重亏损、被监管处罚）\n\n        分析时重点关注：\n        1. 业绩相关：财报、业绩预告、营收利润等\n        2. 政策影响：行业政策、监管政策、地方政策等\n        3. 市场表现：市场份额、竞争态势、商业模式等\n        4. 资本运作：并购重组、股权激励、定增配股等\n        5. 风险事件：诉讼仲裁、处罚、债务等\n        6. 行业地位：技术创新、专利、市占率等\n        7. 舆论环境：媒体评价、社会影响等\n\n        请确保分析：\n        1. 新闻的真实性和可靠性\n        2. 新闻的时效性和影响范围\n        3. 对公司基本面的实际影响\n        4. A股市场的特殊反应规律'}, {'role': 'user', 'content': '请分析以下A股上市公司相关新闻的情感倾向：\n\n标题：136只A股筹码大换手（2月24日）\n来源：证券时报网\n时间：2025-02-24 17:46:19\n内容：利欧股份 4.57 20.82 4.10 300166 东方国信 13.54 20.82 1.20 301013 利和兴 14.46 20.67 5.55 836239 长虹能源 45.39 20.61 6.18 300287 飞利信 7.57 20.56 -7.46 300895\n\n标题：快手概念下跌1.28%，主力资金净流出47股\n来源：证券时报网\n时间：2025-02-24 17:46:12\n内容：利欧股份 4.10 20.82 2843.54 301165 锐捷网络 5.63 32.66 3670.04 002654 万润科技 6.59 14.93 20880.04 300063 天龙集团 5.59 23.61 21013.42 注：本文系新闻报道，不构成投资建议，股市有风险\n\n标题：利欧股份：公司与深度求索（DeepSeek）不存在股权投资关系\n来源：证券日报\n时间：2025-02-24 16:06:11\n内容：证券日报网讯利欧股份2月24日在互动平台回答投资者提问时表示，截至目前，公司与深度求索（DeepSeek）不存在股权投资关系。 （文章来源：证券日报）\n\n标题：机械设备行业今日涨1.24% 主力资金净流出44.42亿元\n来源：证券时报网\n时间：2025-02-20 18:13:02\n内容：利欧股份 0.23 11.74 -17477.13 002611 东方精工 -2.70 15.78 -17368.22 300124 汇川技术 -0.11 2.16 -16555.07 688165 埃夫特 -2.44 8.70 -14554.03 002896 中大力德 10.00\n\n标题：小红书概念下跌0.52%，8股主力资金净流出超亿元\n来源：证券时报网\n时间：2025-02-20 18:13:01\n内容：代码 简称 今日涨跌幅（%） 今日换手率（%） 主力资金流量（万元） 300766 每日互动 -11.34 41.34 -134007.13 600986 浙文互联 -3.85 26.64 -41139.10 300846 首都在线 -6.04 31.18 -27726.28 002131\n\n标题：机器视觉概念上涨4.47%，20股主力资金净流入超亿元\n来源：证券时报网\n时间：2025-02-19 18:12:40\n内容：利欧股份 1.89 11.57 -6019.16 -2.07 300496 中科创达 3.06 7.36 -6074.22 -3.47 002347 泰尔股份 -1.06 24.10 -6640.16 -5.92 002415 海康威视 0.47 0.56 -7758.43 -4.71\n\n标题：机械设备行业今日净流入资金85.63亿元 巨轮智能等26股净流入资金超亿元\n来源：证券时报网\n时间：2025-02-19 16:40:36\n内容：利欧股份 1.89 11.57 -6019.16 600582 天地科技 2.41 1.94 -5578.53 002272 川润股份 -1.97 18.51 -5248.70 601766 中国中车 0.00 0.40 -4854.06 688097 博众精工 9.62 3.63\n\n标题：小红书概念下跌5.60% 11股主力资金净流出超亿元\n来源：证券时报网\n时间：2025-02-18 16:46:32\n内容：（数据宝） 小红书概念资金流出榜 代码 简称 今日涨跌幅（%） 今日换手率（%） 主力资金流量（万元） 002335 科华数据 -2.12 23.52 -55390.39 002131 利欧股份 -6.61 15.38 -47271.34 300058 蓝色光标 -7.29 12.21\n\n标题：快手概念下跌5.07% 主力资金净流出46股\n来源：证券时报网\n时间：2025-02-18 16:46:32\n内容：（数据宝） 快手概念资金流出榜 代码 简称 今日涨跌幅（%） 今日换手率（%） 主力资金流量（万元） 300459 汤姆猫 -7.32 13.72 -58622.48 002131 利欧股份 -6.61 15.38 -47271.34 300058 蓝色光标 -7.29 12.21\n\n请直接返回一个数字，范围是-1到1，无需解释。'}]
+2025-02-24 21:45:18,873 - api_calls - INFO - ⟳ 正在调用 GEMINI API...
+2025-02-24 21:45:18,873 - api_calls - INFO - 请求内容: User: 请分析以下A股上市公司相关新闻的情感倾向：
+
+标题：136只A股筹码大换手（2月24日）
+来源：证券时报网
+时间：2025-02-24 17:46:19
+内容：利欧股份 4.57 20.82 4.10 300166 东方国信 13.54 20.82 1.20 301013 利和兴 14.46 20.67 5.55 836239 长虹能源 45.39 20.61 6.18 300287 飞利信 7.57 20.56 -7.46 300895
+
+标题：快手概念下跌1.28%，主力资金净流出47股
+来源：证券时报网
+时间：2025-02-24 17:46:12
+内容：利欧股份 4.10 20.82 2843.54 301165 锐捷网络 5.63 32.66 3670.04 002654 万润科技 6.59 14.93 20880.04 300063 天龙集团 5.59 23.61 21013.42 注：本文系新闻报道，不构成投资建议，股市有风险
+
+标题：利欧股份：公司与深度求索（DeepSeek）不存在股权投资关系
+来源：证券日报
+时间：2025-02-24 16:06:11
+...
+2025-02-24 21:45:18,873 - api_calls - INFO - 请求配置: {'system_instruction': '你是一个专业的A股市场分析师，擅长解读新闻对股票走势的影响。你需要分析一组新闻的情感倾向，并给出一个介于-1到1之间的分数：\n        - 1表示极其积极（例如：重大利好消息、超预期业绩、行业政策支持）\n        - 0.5到0.9表示积极（例如：业绩增长、新项目落地、获得订单）\n        - 0.1到0.4表示轻微积极（例如：小额合同签订、日常经营正常）\n        - 0表示中性（例如：日常公告、人事变动、无重大影响的新闻）\n        - -0.1到-0.4表示轻微消极（例如：小额诉讼、非核心业务亏损）\n        - -0.5到-0.9表示消极（例如：业绩下滑、重要客户流失、行业政策收紧）\n        - -1表示极其消极（例如：重大违规、核心业务严重亏损、被监管处罚）\n\n        分析时重点关注：\n        1. 业绩相关：财报、业绩预告、营收利润等\n        2. 政策影响：行业政策、监管政策、地方政策等\n        3. 市场表现：市场份额、竞争态势、商业模式等\n        4. 资本运作：并购重组、股权激励、定增配股等\n        5. 风险事件：诉讼仲裁、处罚、债务等\n        6. 行业地位：技术创新、专利、市占率等\n        7. 舆论环境：媒体评价、社会影响等\n\n        请确保分析：\n        1. 新闻的真实性和可靠性\n        2. 新闻的时效性和影响范围\n        3. 对公司基本面的实际影响\n        4. A股市场的特殊反应规律'}
+2025-02-24 21:45:20,683 - api_calls - INFO - ✓ API 调用成功
+2025-02-24 21:45:20,684 - api_calls - INFO - 响应内容: 0.0
+
+2025-02-24 21:45:20,684 - api_calls - DEBUG - API 原始响应: 0.0
+
+2025-02-24 21:45:20,684 - api_calls - INFO - ✓ 成功获取响应
+2025-02-24 21:45:20,688 - api_calls - INFO - ⟳ 使用模型: gemini-1.5-flash
+2025-02-24 21:45:20,688 - api_calls - DEBUG - 消息内容: [{'role': 'system', 'content': 'You are a portfolio manager making final trading decisions.\n            Your job is to make a trading decision based on the team\'s analysis while strictly adhering\n            to risk management constraints.\n\n            RISK MANAGEMENT CONSTRAINTS:\n            - You MUST NOT exceed the max_position_size specified by the risk manager\n            - You MUST follow the trading_action (buy/sell/hold) recommended by risk management\n            - These are hard constraints that cannot be overridden by other signals\n\n            When weighing the different signals for direction and timing:\n            1. Valuation Analysis (35% weight)\n               - Primary driver of fair value assessment\n               - Determines if price offers good entry/exit point\n            \n            2. Fundamental Analysis (30% weight)\n               - Business quality and growth assessment\n               - Determines conviction in long-term potential\n            \n            3. Technical Analysis (25% weight)\n               - Secondary confirmation\n               - Helps with entry/exit timing\n            \n            4. Sentiment Analysis (10% weight)\n               - Final consideration\n               - Can influence sizing within risk limits\n            \n            The decision process should be:\n            1. First check risk management constraints\n            2. Then evaluate valuation signal\n            3. Then evaluate fundamentals signal\n            4. Use technical analysis for timing\n            5. Consider sentiment for final adjustment\n            \n            Provide the following in your output:\n            - "action": "buy" | "sell" | "hold",\n            - "quantity": <positive integer>\n            - "confidence": <float between 0 and 1>\n            - "agent_signals": <list of agent signals including agent name, signal (bullish | bearish | neutral), and their confidence>\n            - "reasoning": <concise explanation of the decision including how you weighted the signals>\n\n            Trading Rules:\n            - Never exceed risk management position limits\n            - Only buy if you have available cash\n            - Only sell if you have shares to sell\n            - Quantity must be ≤ current position for sells\n            - Quantity must be ≤ max_position_size from risk management'}, {'role': 'user', 'content': 'Based on the team\'s analysis below, make your trading decision.\n\n            Technical Analysis Trading Signal: {"signal": "bullish", "confidence": "41%", "strategy_signals": {"trend_following": {"signal": "bullish", "confidence": "27%", "metrics": {"adx": 27.215587923257655, "trend_strength": 0.27215587923257656}}, "mean_reversion": {"signal": "neutral", "confidence": "50%", "metrics": {"z_score": 0.7201378522786068, "price_vs_bb": 0.6520296611136018, "rsi_14": 66.19718309859155, "rsi_28": 65.16634050880626}}, "momentum": {"signal": "neutral", "confidence": "50%", "metrics": {"momentum_1m": 0.10544143172738052, "momentum_3m": 0.795152068080389, "momentum_6m": 1.2867609971035, "volume_momentum": 0.8038457609321991}}, "volatility": {"signal": "bullish", "confidence": "71%", "metrics": {"historical_volatility": 0.7509650013889624, "volatility_regime": 0.7142621045729448, "volatility_z_score": -2.124227065428821, "atr_ratio": 0.0696387894565571}}, "statistical_arbitrage": {"signal": "neutral", "confidence": "50%", "metrics": {"hurst_exponent": 0.0, "skewness": 0.25681108420275217, "kurtosis": -0.838993422171095}}}}\n            Fundamental Analysis Trading Signal: {"signal": "neutral", "confidence": "50%", "reasoning": {"profitability_signal": {"signal": "bearish", "details": "ROE: -1.24%, Net Margin: -1.14%, Op Margin: -1.65%"}, "growth_signal": {"signal": "bearish", "details": "Revenue Growth: 1.08%, Earnings Growth: -108.60%"}, "financial_health_signal": {"signal": "bullish", "details": "Current Ratio: 2.05, D/E: 0.44"}, "price_ratios_signal": {"signal": "bullish", "details": "P/E: -145.47, P/B: 2.40, P/S: 1.95"}}}\n            Sentiment Analysis Trading Signal: {"signal": "neutral", "confidence": "100%", "reasoning": "Based on 9 recent news articles, sentiment score: 0.00"}\n            Valuation Analysis Trading Signal: {"signal": "bearish", "confidence": "99%", "reasoning": {"dcf_analysis": {"signal": "bearish", "details": "Intrinsic Value: $0.00, Market Cap: $30,945,779,806.00, Gap: -100.0%"}, "owner_earnings_analysis": {"signal": "bearish", "details": "Owner Earnings Value: $375,860,660.57, Market Cap: $30,945,779,806.00, Gap: -98.8%"}}}\n            Risk Management Trading Signal: {"max_position_size": 12500.0, "risk_score": 6, "trading_action": "bearish", "risk_metrics": {"volatility": 0.6671429065454172, "value_at_risk_95": -0.06356995483187419, "max_drawdown": -0.5008787346221442, "market_risk_score": 4, "stress_test_results": {"market_crash": {"potential_loss": -0.0, "portfolio_impact": -0.0}, "moderate_decline": {"potential_loss": -0.0, "portfolio_impact": -0.0}, "slight_decline": {"potential_loss": -0.0, "portfolio_impact": -0.0}}}, "reasoning": "Risk Score 6/10: Market Risk=4, Volatility=66.71%, VaR=-6.36%, Max Drawdown=-50.09%"}\n\n            Here is the current portfolio:\n            Portfolio:\n            Cash: 100000.00\n            Current Position: 0 shares\n\n            Only include the action, quantity, reasoning, confidence, and agent_signals in your output as JSON.  Do not include any JSON markdown.\n\n            Remember, the action must be either buy, sell, or hold.\n            You can only buy if you have available cash.\n            You can only sell if you have shares in the portfolio to sell.'}]
+2025-02-24 21:45:20,689 - api_calls - INFO - ⟳ 正在调用 GEMINI API...
+2025-02-24 21:45:20,689 - api_calls - INFO - 请求内容: User: Based on the team's analysis below, make your trading decision.
+
+            Technical Analysis Trading Signal: {"signal": "bullish", "confidence": "41%", "strategy_signals": {"trend_following": {"signal": "bullish", "confidence": "27%", "metrics": {"adx": 27.215587923257655, "trend_strength": 0.27215587923257656}}, "mean_reversion": {"signal": "neutral", "confidence": "50%", "metrics": {"z_score": 0.7201378522786068, "price_vs_bb": 0.6520296611136018, "rsi_14": 66.19718309859155, "rsi_28"...
+2025-02-24 21:45:20,689 - api_calls - INFO - 请求配置: {'system_instruction': 'You are a portfolio manager making final trading decisions.\n            Your job is to make a trading decision based on the team\'s analysis while strictly adhering\n            to risk management constraints.\n\n            RISK MANAGEMENT CONSTRAINTS:\n            - You MUST NOT exceed the max_position_size specified by the risk manager\n            - You MUST follow the trading_action (buy/sell/hold) recommended by risk management\n            - These are hard constraints that cannot be overridden by other signals\n\n            When weighing the different signals for direction and timing:\n            1. Valuation Analysis (35% weight)\n               - Primary driver of fair value assessment\n               - Determines if price offers good entry/exit point\n            \n            2. Fundamental Analysis (30% weight)\n               - Business quality and growth assessment\n               - Determines conviction in long-term potential\n            \n            3. Technical Analysis (25% weight)\n               - Secondary confirmation\n               - Helps with entry/exit timing\n            \n            4. Sentiment Analysis (10% weight)\n               - Final consideration\n               - Can influence sizing within risk limits\n            \n            The decision process should be:\n            1. First check risk management constraints\n            2. Then evaluate valuation signal\n            3. Then evaluate fundamentals signal\n            4. Use technical analysis for timing\n            5. Consider sentiment for final adjustment\n            \n            Provide the following in your output:\n            - "action": "buy" | "sell" | "hold",\n            - "quantity": <positive integer>\n            - "confidence": <float between 0 and 1>\n            - "agent_signals": <list of agent signals including agent name, signal (bullish | bearish | neutral), and their confidence>\n            - "reasoning": <concise explanation of the decision including how you weighted the signals>\n\n            Trading Rules:\n            - Never exceed risk management position limits\n            - Only buy if you have available cash\n            - Only sell if you have shares to sell\n            - Quantity must be ≤ current position for sells\n            - Quantity must be ≤ max_position_size from risk management'}
+2025-02-24 21:45:24,341 - api_calls - INFO - ✓ API 调用成功
+2025-02-24 21:45:24,342 - api_calls - INFO - 响应内容: ```json
+{
+  "action": "hold",
+  "quantity": 0,
+  "confidence": 0.64,
+  "agent_signals": [
+    {
+      "agent": "Technical Analysis",
+      "signal": "bullish",
+      "confidence": 0.41
+    },
+    {
+      "agent": "Fundamental Analysis",
+      "signal": "neutral",
+      "confidence": 0.5
+    },
+    {
+      "agent": "Sentiment Analysis",
+      "signal": "neutral",
+      "confidence": 1.0
+    },
+    {
+      "agent": "Valuation Analysis",
+      "signal": "bearish",
+      "confidence": 0.99
+    },
+  ...
+2025-02-24 21:45:24,342 - api_calls - DEBUG - API 原始响应: ```json
+{
+  "action": "hold",
+  "quantity": 0,
+  "confidence": 0.64,
+  "agent_signals": [
+    {
+      "agent": "Technical Analysis",
+      "signal": "bullish",
+      "confidence": 0.41
+    },
+    {
+      "agent": "Fundamental Analysis",
+      "signal": "neutral",
+      "confidence": 0.5
+    },
+    {
+      "agent": "Sentiment Analysis",
+      "signal": "neutral",
+      "confidence": 1.0
+    },
+    {
+      "agent": "Valuation Analysis",
+      "signal": "bearish",
+      "confidence": 0.99
+    },
+    {
+      "agent": "Risk Management",
+      "signal": "bearish",
+      "confidence": 1.0
+    }
+  ],
+  "reasoning": "Risk Management dictates a bearish trading action. Valuation analysis strongly suggests a bearish outlook (99% confidence), significantly outweighing the bullish signal from technical analysis (41%).  Fundamental analysis is neutral. Sentiment is also neutral. Considering the weighted average of signals and the hard constraints imposed by risk management, the decision is to hold."
+}
+```
+
+2025-02-24 21:45:24,342 - api_calls - INFO - ✓ 成功获取响应

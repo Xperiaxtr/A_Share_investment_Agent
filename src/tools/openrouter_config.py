@@ -76,7 +76,7 @@ else:
 api_provider = os.getenv("API_PROVIDER", "deepseek")
 
 if api_provider.lower() == "deepseek":
-    deepseek_api_key = os.getenv("DEEPEEK_API_KEY")
+    deepseek_api_key = os.getenv("DEEPSEEK_API_KEY")
     if not deepseek_api_key:
         logger.error(f"{ERROR_ICON} 未找到 DEEPEEK_API_KEY 环境变量")
         raise ValueError("DEEPEEK_API_KEY not found in environment variables")
@@ -129,21 +129,31 @@ def generate_content_with_retry(model, contents, config=None):
                 model="deepseek-chat",
                 messages=[
                     {"role": "system", "content": str(config)},
-                    {"role": "user",   "content": str(contents)},
+                    {"role": "user", "content": str(contents)},
                 ],
                 stream=False
             )
+            # 对于 deepseek，提取choices中消息内容
+            response_content = response.choices[0].message.content
+
         elif api_provider.lower() == "gemini":
             response = client.models.generate_content(
                 model=model,
                 contents=contents,
                 config=config
             )
+            # 这里假设Gemini接口返回的是字典格式，内容在 "result" 键中
+            response_content = response.get("result", None)
+            if response_content is None:
+                response_content = str(response)
         else:
             raise ValueError("Unsupported API_PROVIDER")
 
+        # 将统一的响应内容存入 response.text 属性，方便后续统一使用
+        setattr(response, "text", response_content)
+
         logger.info(f"{SUCCESS_ICON} API 调用成功")
-        logger.info(f"响应内容: {response.text[:500]}..." if len(str(response.text)) > 500 else f"响应内容: {response.text}")
+        logger.info(f"响应内容: {response.text[:500]}..." if len(response.text) > 500 else f"响应内容: {response.text}")
         return response
 
     except Exception as e:
