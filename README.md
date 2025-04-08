@@ -1,19 +1,26 @@
+修改自 ai hedge fund.
+
+本项目不需要任何费用，星球是我个人社区，可以付费加入交个朋友。
+
+## 请知悉。
+
+---
+
 # AI 投资系统
 
 > > 加入我的知识星球（一顿饭钱：99¥）
 
->（微信号: PareidoliaX，加微信后，我拉你进星球.该微信只做邀请用途，不做任何私人回复。非加星球请勿扰哈。），
+> （微信号: PareidoliaX，加微信后，我拉你进星球.该微信只做邀请用途，不做任何私人回复。非加星球请勿扰哈。），
 
->星球中还有更多我个人分享的资料和对该项目的解析噢。
-> > 另外，星球会提前更新两个版本的代码哈，抢先体验不容错过哦。
+> 星球中还有更多我个人分享的资料和对该项目的解析噢。
+>
+> > 另外，星球会提前更新代码哈，抢先体验不容错过哦。
 
 这个系统目前是只支持 A 股的哈。
 
 这是一个基于人工智能的投资系统概念验证项目。项目目标是探索如何使用 AI 来辅助投资决策。本项目仅用于**教育目的**，不适用于实际交易或投资。
 
 ## 系统架构
-
-### 最新架构 (V2)
 
 ![System Architecture V2](src/data/img/structure_v2.png)
 
@@ -25,6 +32,16 @@
 
 另外，优化了终端输出，减少了不必要的详细数据显示，使输出更加清晰易读
 
+## 最新功能：辩论室智能增强
+
+我们最新升级了辩论室(Debate Room)模块的决策机制：
+
+1. **LLM 第三方分析**：引入大型语言模型作为独立的第三方分析师，对多空观点进行客观评估
+2. **混合置信度计算**：将传统的多空置信度差异与 LLM 评分进行加权融合，形成更全面的决策依据
+3. **增强的辩论机制**：系统现在能够自动汇总所有研究员的观点，生成结构化分析，并整合进最终决策
+
+这一改进使决策过程更加平衡客观，特别适合在市场信息复杂、多方观点存在分歧的情况下提供更可靠的投资建议。未来我们将持续优化这一机制，进一步提升决策质量。
+
 ⚠️ **注意**: 目前回测系统还在测试中，建议使用以下命令来使用系统：
 
 ```bash
@@ -33,22 +50,6 @@ poetry run python src/main.py --ticker 000000 #修改成你想要测试的股票
 
 # 显示详细推理过程 - 查看每个智能体的分析过程
 poetry run python src/main.py --ticker 000000 --show-reasoning #修改成你想要测试的股票代码
-```
-
-### 原始架构 (V1)
-
-```mermaid
-graph TD
-    MD[Market Data Agent] --> TA[Technical Analyst]
-    MD --> FA[Fundamentals Analyst]
-    MD --> SA[Sentiment Analyst]
-    MD --> VA[Valuation Analyst]
-    TA --> RM[Risk Manager]
-    FA --> RM
-    SA --> RM
-    VA --> RM
-    RM --> PM[Portfolio Manager]
-    PM --> Decision[Final Decision]
 ```
 
 系统由以下几个协同工作的 agent 组成：
@@ -121,8 +122,14 @@ cp .env.example .env
    打开 .env 文件,填入你的 API key:
 
 ```
-GEMINI_API_KEY=your-gemini-api-key-here
+# Gemini API 配置
+GEMINI_API_KEY=your-gemini-api-key
 GEMINI_MODEL=gemini-1.5-flash
+
+# OpenAI Compatible API 配置（可选）
+OPENAI_COMPATIBLE_API_KEY=your-openai-compatible-api-key
+OPENAI_COMPATIBLE_BASE_URL=https://your-api-endpoint.com/v1
+OPENAI_COMPATIBLE_MODEL=your-model-name
 ```
 
 2. **通过命令行设置**
@@ -130,18 +137,30 @@ GEMINI_MODEL=gemini-1.5-flash
 Unix/macOS:
 
 ```bash
-export GEMINI_API_KEY='your-gemini-api-key-here'
+# Gemini API 配置
+export GEMINI_API_KEY='your-gemini-api-key'
 export GEMINI_MODEL='gemini-1.5-flash'
+
+# OpenAI Compatible API 配置（可选）
+export OPENAI_COMPATIBLE_API_KEY='your-openai-compatible-api-key'
+export OPENAI_COMPATIBLE_BASE_URL='https://your-api-endpoint.com/v1'
+export OPENAI_COMPATIBLE_MODEL='your-model-name'
 ```
 
 Windows PowerShell:
 
 ```powershell
-$env:GEMINI_API_KEY='your-gemini-api-key-here'
+# Gemini API 配置
+$env:GEMINI_API_KEY='your-gemini-api-key'
 $env:GEMINI_MODEL='gemini-1.5-flash'
+
+# OpenAI Compatible API 配置（可选）
+$env:OPENAI_COMPATIBLE_API_KEY='your-openai-compatible-api-key'
+$env:OPENAI_COMPATIBLE_BASE_URL='https://your-api-endpoint.com/v1'
+$env:OPENAI_COMPATIBLE_MODEL='your-model-name'
 ```
 
-注意: 推荐使用第一种方式(修改 .env 文件)。
+注意: 推荐使用第一种方式(修改 .env 文件)。系统会优先使用 OpenAI Compatible API（如果配置了），否则会使用 Gemini API。
 
 ## Usage
 
@@ -314,7 +333,8 @@ ai-hedge-fund/
 │   │   ├── sentiment.py         # Sentiment Agent
 │   │   ├── state.py            # Agent状态管理
 │   │   ├── technicals.py       # Technical Analyst
-│   │   └── valuation.py        # Valuation Agent
+│   │   ├── valuation.py        # Valuation Agent
+│   │   └── debate_room.py       # Debate Room Agent
 │   ├── data/                   # 数据存储目录
 │   │   ├── sentiment_cache.json # 情绪分析缓存
 │   │   └── stock_news/         # 股票新闻数据
@@ -325,6 +345,8 @@ ai-hedge-fund/
 │   │   ├── openrouter_config.py # OpenRouter配置
 │   │   └── test_*.py           # 测试文件
 │   ├── utils/                  # 通用工具函数
+│   │   ├── logging_config.py   # 日志配置
+│   │   └── llm_clients.py      # LLM客户端（支持Gemini和OpenAI Compatible API）
 │   ├── backtester.py          # 回测系统
 │   └── main.py                # 主程序入口
 ├── logs/                      # 日志文件目录
@@ -363,7 +385,6 @@ ai-hedge-fund/
 <div style="display: flex; justify-content: space-between;">
     <div style="text-align: center; margin-right: 20px;">
         <p>关注公众号【空指针指向了量化 Agent】，获取更多量化投资和 AI 智能交易相关的干货内容！
-        现在关注即可领取 <b>¥20</b> 知识星球优惠券！🎁</p>
         <img src="src/data/img/gzh_code.jpg" alt="公众号二维码" width="300"/>
     </div>
 </div>
@@ -375,6 +396,7 @@ ai-hedge-fund/
         💡 一对一答疑解惑</p>
         <img src="src/data/img/planet.jpg" alt="知识星球二维码" width="300"/>
 </div>
+> 注意不要扫码加入，请添加最开始提到的微信。
 
 ## 项目详细说明
 
@@ -606,25 +628,31 @@ Market Data Analyst → [Technical/Fundamentals/Sentiment/Valuation Analyst] →
 
 ### 系统特点
 
-1. **模块化设计**
+1. **多 LLM 支持**
+
+   - 支持 Google Gemini API
+   - 支持任何兼容 OpenAI API 格式的 LLM 服务（如华为云方舟、OpenRouter 等）
+   - 智能切换功能：自动选择可用的 LLM 服务
+
+2. **模块化设计**
 
    - 每个代理都是独立的模块
    - 易于维护和升级
    - 可以单独测试和优化
 
-2. **可扩展性**
+3. **可扩展性**
 
    - 可以轻松添加新的分析师
    - 支持添加新的数据源
    - 可以扩展决策策略
 
-3. **风险管理**
+4. **风险管理**
 
    - 多层次的风险控制
    - 实时风险评估
    - 自动止损机制
 
-4. **智能决策**
+5. **智能决策**
    - 基于多维度分析
    - 考虑多个市场因素
    - 动态调整策略
